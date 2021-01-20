@@ -2,10 +2,10 @@ import Flutter
 import UIKit
 import Instabug
 
-public class SwiftInstabugFlutterPlugin: NSObject, FlutterPlugin {
+public class SwiftInstabugPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "com.instabug/instabug", binaryMessenger: registrar.messenger())
-    let instance = SwiftInstabugFlutterPlugin()
+    let instance = SwiftInstabugPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 
@@ -79,6 +79,14 @@ public class SwiftInstabugFlutterPlugin: NSObject, FlutterPlugin {
       let color = call.arguments as! [CGFloat]
       let color2 = UIColor(red: color[1], green: color[2], blue: color[3], alpha: color[0])
       Instabug.tintColor = color2
+      result(nil)
+      break;
+    case "setInAppNotificationEnabled":
+      Replies.inAppNotificationsEnabled = call.arguments as! Bool
+      result(nil)
+      break;
+    case "setLocale":
+      Instabug.setLocale(.english)
       result(nil)
       break;
     case "logOut":
