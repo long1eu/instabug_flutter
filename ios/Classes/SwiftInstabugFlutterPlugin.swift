@@ -2,10 +2,10 @@ import Flutter
 import UIKit
 import Instabug
 
-public class SwiftInstabugPlugin: NSObject, FlutterPlugin {
+public class SwiftInstabugFlutterPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "com.instabug/instabug", binaryMessenger: registrar.messenger())
-    let instance = SwiftInstabugPlugin()
+    let instance = SwiftInstabugFlutterPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 
