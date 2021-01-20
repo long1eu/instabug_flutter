@@ -9,10 +9,12 @@ import io.flutter.plugin.common.MethodChannel.Result
 import android.app.Application
 import android.content.Context
 import androidx.annotation.NonNull
+import com.instabug.chat.Replies
 import com.instabug.library.Instabug
 import com.instabug.library.InstabugColorTheme
 import com.instabug.library.invocation.InstabugInvocationEvent
 import com.instabug.library.ui.onboarding.WelcomeMessage
+import java.util.*
 
 /** InstabugFlutterPlugin */
 class InstabugFlutterPlugin : FlutterPlugin, MethodCallHandler {
@@ -92,6 +94,15 @@ class InstabugFlutterPlugin : FlutterPlugin, MethodCallHandler {
             }
             "logOut" -> {
                 Instabug.logoutUser()
+                result.success(null)
+            }
+            "setInAppNotificationEnabled" -> {
+                Replies.setInAppNotificationEnabled(call.arguments as Boolean)
+                result.success(null)
+            }
+            "setLocale" -> {
+                val parts = call.arguments as List<String>
+                Instabug.setLocale(Locale(parts[0], parts[1], parts[2]))
                 result.success(null)
             }
             "show" -> {

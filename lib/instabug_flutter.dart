@@ -40,6 +40,21 @@ class Instabug {
     }
   }
 
+  Future<void> setInAppNotificationEnabled(bool enabled) async {
+    await _channel.invokeMethod('setInAppNotificationEnabled', enabled ?? false);
+  }
+
+  Future<void> setLocale(Locale locale) async {
+    await _channel.invokeMethod(
+      'setLocale',
+      <String>[
+        locale.languageCode ?? '',
+        locale.countryCode ?? '',
+        locale.scriptCode ?? '',
+      ],
+    );
+  }
+
   Future<void> logOut() async {
     await _channel.invokeMethod('logOut');
   }
