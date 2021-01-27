@@ -34,7 +34,7 @@ class Instabug {
   Future<void> setPrimaryColor(Color color) async {
     if (Platform.isAndroid) {
       await _channel.invokeMethod('setPrimaryColor', color.value);
-    } else if (Platform.isAndroid) {
+    } else if (Platform.isIOS) {
       await _channel.invokeMethod('setPrimaryColor',
           [color.alpha, color.red, color.green, color.blue].map((int value) => value / 255).toList());
     }
