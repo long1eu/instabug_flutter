@@ -102,7 +102,7 @@ public class SwiftInstabugFlutterPlugin: NSObject, FlutterPlugin {
       result(nil)
       break;
     case "hasChats":
-      result(Replies.hasChats)
+      result(Replies.hasChats())
       break;
     case "getUnreadRepliesCount":
       result(Replies.unreadRepliesCount)
