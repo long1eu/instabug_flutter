@@ -97,6 +97,16 @@ public class SwiftInstabugFlutterPlugin: NSObject, FlutterPlugin {
       Instabug.show()
       result(nil)
       break;
+    case "replies":
+      Replies.show()
+      result(nil)
+      break;
+    case "hasChats":
+      result(Replies.hasChats)
+      break;
+    case "getUnreadRepliesCount":
+      result(Replies.unreadRepliesCount)
+      break;
     default:
       result(FlutterMethodNotImplemented)
     }

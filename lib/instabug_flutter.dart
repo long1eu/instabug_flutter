@@ -62,6 +62,18 @@ class Instabug {
   Future<void> show() async {
     await _channel.invokeMethod('show');
   }
+
+  Future<void> replies() async {
+    await _channel.invokeMethod('replies');
+  }
+
+  Future<bool> hasChats() async {
+    return _channel.invokeMethod('hasChats');
+  }
+
+  Future<int> getUnreadRepliesCount() async {
+    return _channel.invokeMethod('getUnreadRepliesCount');
+  }
 }
 
 class InvocationEvent {

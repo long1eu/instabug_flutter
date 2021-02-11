@@ -109,6 +109,16 @@ class InstabugFlutterPlugin : FlutterPlugin, MethodCallHandler {
                 Instabug.show()
                 result.success(null)
             }
+            "replies" -> {
+                Replies.show()
+                result.success(null)
+            }
+            "hasChats" -> {
+                result.success(Replies.hasChats())
+            }
+            "getUnreadRepliesCount" -> {
+                result.success(Replies.getUnreadRepliesCount())
+            }
             else -> {
                 result.notImplemented()
             }
